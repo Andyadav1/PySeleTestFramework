@@ -7,6 +7,7 @@ from selenium.webdriver.support.expected_conditions import presence_of_element_l
 from selenium.webdriver.support.wait import WebDriverWait
 
 from Login import LoginPage
+from Shop import ShopPage
 
 
 def test_E2E(browser):
@@ -14,8 +15,12 @@ def test_E2E(browser):
     driver.maximize_window()
     wait = WebDriverWait(driver,10)
     driver.get("https://rahulshettyacademy.com/loginpagePractise/")
-    loginPage = LoginPage(driver)
-    loginPage.login()
+    login_page = LoginPage(driver)
+    shop_page = login_page.login()
+    shop_page.add_product_to_cart(product_name="Blackberry")
+    checkout_page = shop_page.go_to_cart()
+    checkout_page.checkout()
+
 
 
 
