@@ -3,15 +3,17 @@ from mimetypes import add_type
 from selenium.webdriver.common.by import By
 
 from Checkout import CheckoutPage
+from utils.Common import Common
 
 
-class ShopPage():
+class ShopPage(Common):
     def __init__(self,driver):
         self.driver = driver
+        super().__init__(driver)
         self.shopTab = (By.XPATH,"//a[text()='Shop']")
-        self.productCards = (By.XPATH,"//div[contains(@class,'-100')]")
-        self.productName = (By.XPATH, "//div/h4/a")
-        self.addToCart = (By.XPATH,"//div/button/i")
+        self.productCards = (By.XPATH,"//div[@class='card h-100']")
+        self.productName = (By.XPATH,"div/h4/a")
+        self.addToCart = (By.XPATH,"div/button")
         self.checkoutTab = (By.XPATH,"//a[contains(text(),' Checkout')]")
 
 

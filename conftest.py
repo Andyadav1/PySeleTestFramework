@@ -14,15 +14,15 @@ def browser(request):
     browse_name = request.config.getoption("--browser_name")
     if browse_name == "Chrome":
         driver = webdriver.Chrome()
-        driver.implicitly_wait(10)
     elif browse_name == "firefox":
         driver = webdriver.Firefox()
-        driver.implicitly_wait(10)
     elif browse_name == "edge":
         driver = webdriver.Edge()
-        driver.implicitly_wait(10)
     elif browse_name == "safari":
         driver = webdriver.Safari()
-        driver.implicitly_wait(10)
+
+
+    driver.implicitly_wait(10)
     wait = WebDriverWait(driver, 10)
     yield driver
+    driver.close()

@@ -1,26 +1,26 @@
-import time
+import json
 
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.expected_conditions import presence_of_element_located
-from selenium.webdriver.support.wait import WebDriverWait
+import pytest
 
 from Login import LoginPage
-from Shop import ShopPage
+test_data_path = "./data/test_data.json"
+with open(test_data_path) as f:
+    test_data = json.load(f)
+    data_lists = test_data["data"]
 
-
-def test_E2E(browser):
+@pytest.mark.smoke
+@pytest.mark.parametrize("data",data_lists)
+def test_E2E(browser,data):
     driver = browser
     driver.maximize_window()
-    wait = WebDriverWait(driver,10)
     driver.get("https://rahulshettyacademy.com/loginpagePractise/")
     login_page = LoginPage(driver)
-    shop_page = login_page.login()
-    shop_page.add_product_to_cart(product_name="Blackberry")
+    shop_page = login_page.login(data["UserName"],data["Password"])
+    shop_page.add_product_to_cart(product_name=data["ProductName"])
     checkout_page = shop_page.go_to_cart()
-    checkout_page.checkout()
-
+    delivery_page = checkout_page.checkout()
+    delivery_page.delivery_location(CountryName="Ind")
+    delivery_page.validation()
 
 
 
