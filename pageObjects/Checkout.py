@@ -1,6 +1,7 @@
+
 from selenium.webdriver.common.by import By
 
-from DeliveryLocation import DeliveryPage
+from pageObjects.DeliveryLocation import DeliveryPage
 from utils.Common import Common
 
 

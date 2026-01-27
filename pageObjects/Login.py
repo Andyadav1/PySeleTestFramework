@@ -1,5 +1,5 @@
 from utils.Common import Common
-from Shop import ShopPage
+from pageObjects.Shop import ShopPage
 
 
 class LoginPage(Common):
@@ -8,8 +8,8 @@ class LoginPage(Common):
         super().__init__(driver)
 
     def login(self,Username,Password):
-        self.driver.find_element(*self.input_by_id("username")).send_keys(Username)
+        self.driver.find_element(*self.input_by_id("user-name")).send_keys(Username)
         self.driver.find_element(*self.input_by_id("password")).send_keys(Password)
-        self.driver.find_element(*self.input_by_id("signInBtn")).click()
+        self.driver.find_element(*self.input_by_id("login-button")).click()
         shop_page = ShopPage(self.driver)
         return shop_page

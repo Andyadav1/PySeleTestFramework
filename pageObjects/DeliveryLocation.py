@@ -20,11 +20,11 @@ class DeliveryPage(Common):
         wait = WebDriverWait(self.driver, 10)
 
         wait.until(expected_conditions.visibility_of_element_located(self.suggested_country(CountryName)))
-        self.driver.find_element(*self.suggested_country(CountryName)).click()
+        select_country =  self.driver.find_element(*self.suggested_country(CountryName))
+        select_country.click()
         time.sleep(5)
-
-        self.driver.find_element(*self.suggested_country(CountryName)).click()
-        self.driver.find_element(By.XPATH,"//div[contains(@class,'checkbox')]").click()
+        #if select_country.is_displayed():
+        select_country.click()
         self.driver.find_element(*self.purchase).click()
 
     def validation(self):

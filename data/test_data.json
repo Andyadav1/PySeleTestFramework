@@ -1,15 +1,11 @@
-{
-  "data" : [
+ [
     {
-      "UserName" : "rahulshettyacademy",
-      "Password" : "Learning@830$3mK2",
-      "ProductName" : "Blackberry"
+      "UserName" : "locked_out_user",
+      "ProductName" : "Bike"
     }
   ,
     {
-      "UserName" : "rahulshettyacademy",
-      "Password" : "Learning@830$3mK2",
-      "ProductName" : "Samsung Note 8"
+      "UserName" : "standard_user",
+      "ProductName" : "Backpack"
     }
   ]
-}
