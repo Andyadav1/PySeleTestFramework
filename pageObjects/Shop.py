@@ -12,21 +12,15 @@ class ShopPage(Common):
         super().__init__(driver)
         self.driver = driver
         self.addProdsToCart = lambda productName : (By.XPATH,f"//div[contains(text(),'{productName}')]/../../../div/button")
-        self.checkoutTab = (By.XPATH,"//span[@class='select_container']")
+        self.cart = (By.XPATH,"//a[@class='shopping_cart_link']")
 
 
-    def filter(self):
+    def filter(self,selectFilter):
         filter = Select(self.driver.find_element(By.XPATH,"//select[@class='product_sort_container']"))
-        filter.select_by_value("")
-
-
+        filter.select_by_value(selectFilter)
 
 
     def add_product_to_cart(self,product_name):
         self.driver.find_element(*self.addProdsToCart(product_name)).click()
 
 
-    def go_to_cart(self):
-        self.driver.find_element(*self.checkoutTab).click()
-        checkout_page = CheckoutPage(self.driver)
-        return checkout_page

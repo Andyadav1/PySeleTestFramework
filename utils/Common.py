@@ -13,8 +13,11 @@ with open(creds) as f:
 class Common:
     def __init__(self,driver):
         self.driver = driver
-        self.input_by_id = lambda id_text : (By.XPATH,f"//input[@id='{id_text}']")
-        self.test_default = lambda text="stuff" : (By.XPATH,f"(//input[@id='{text}']")
+        self.input_by_id = lambda id_text: (By.XPATH,f"//input[@id='{id_text}']")
+        self.button_by_id = lambda id_text: (By.XPATH,f"//button[@id='{id_text}']")
+
+
+
 
     def get_title(self):
         self.driver.title()
