@@ -30,10 +30,7 @@ class CheckoutPage(Common):
 
         calculatedTotal = totalAmount + tax
         calculatedTotal = round(calculatedTotal, 2)
-        print(calculatedTotal)
-        print(totalPrice)
-        assert calculatedTotal == totalPrice
-
+        return calculatedTotal,totalPrice
 
 
 

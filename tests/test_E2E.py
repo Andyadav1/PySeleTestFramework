@@ -29,6 +29,6 @@ def test_E2E(browser,data):
     checkutPage.click_an_element(checkutPage.button_by_id("checkout"))
     checkutPage.delivery_details(userDetails["firstName"],userDetails["lastName"],userDetails["zipCode"])
     checkutPage.click_an_element(checkutPage.input_by_id("continue"))
-    checkutPage.validate_bill()
-
+    calculatedTotal,totalPrice = checkutPage.validate_bill()
+    assert calculatedTotal == totalPrice
 
