@@ -15,8 +15,7 @@ class Common:
         self.driver = driver
         self.input_by_id = lambda id_text: (By.XPATH,f"//input[@id='{id_text}']")
         self.button_by_id = lambda id_text: (By.XPATH,f"//button[@id='{id_text}']")
-
-
+        self.div_by_class = lambda class_text: (By.XPATH,f"//div[@class='{class_text}']")
 
 
     def get_title(self):

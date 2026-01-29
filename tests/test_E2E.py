@@ -1,13 +1,9 @@
 import json
-
-
 import pytest
 
-from pageObjects.Cart import CartPage
 from pageObjects.Checkout import CheckoutPage
 from pageObjects.Login import LoginPage
 from pageObjects.Shop import ShopPage
-from utils.Common import users
 
 test_data_path = "./data/test_data.json"
 with open(test_data_path) as f:
@@ -18,16 +14,21 @@ with open(test_data_path) as f:
 def test_E2E(browser,data):
     driver = browser
     loginPage = LoginPage(driver)
-    password = loginPage.get_credentials(data["UserName"])
+    username = data["username"]
+    password = loginPage.get_credentials(username)
+    userDetails = data["userDetails"]
     shopPage = ShopPage(driver)
-    cartPage = CartPage(driver)
+    checkutPage = CheckoutPage(driver)
 
-    loginPage.login(data["UserName"],password)
+
+    loginPage.login(username,password)
     shopPage.filter("lohi")
-    shopPage.add_product_to_cart(data["ProductName"])
+    shopPage.add_product_to_cart(data["productName"])
     shopPage.click_an_element(shopPage.cart)
-    cartPage.remove_prodict(data["ProductName"])
-    cartPage.click_an_element(cartPage.checkout)
-
+    #checkutPage.click_an_element(checkutPage.remove(product_name))
+    checkutPage.click_an_element(checkutPage.button_by_id("checkout"))
+    checkutPage.delivery_details(userDetails["firstName"],userDetails["lastName"],userDetails["zipCode"])
+    checkutPage.click_an_element(checkutPage.input_by_id("continue"))
+    checkutPage.validate_bill()
 
 

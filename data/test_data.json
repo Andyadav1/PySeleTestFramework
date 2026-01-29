@@ -1,11 +1,13 @@
  [
     {
-      "UserName" : "locked_out_user",
-      "ProductName" : "Bike"
-    }
-  ,
-    {
-      "UserName" : "standard_user",
-      "ProductName" : "Backpack"
+      "username" : "standard_user",
+      "productName" : "Bike",
+      "userDetails": {
+        "firstName": "Anand",
+        "lastName": "Yadav",
+        "zipCode": 12345
+      }
+
     }
   ]
+
